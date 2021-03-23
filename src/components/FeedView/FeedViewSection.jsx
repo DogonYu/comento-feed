@@ -1,69 +1,52 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import useReadDetailFeed from 'src/hooks/useReadDetailFeed';
+import replaceDateFormat from 'src/api/replaceDateFormat';
 
-const FeedViewSection = () => {
+const FeedViewSection = ({ match }) => {
+  const { id } = match.params;
+  const { detailFeed } = useReadDetailFeed({ id });
+  const feedCreatedAt = detailFeed && replaceDateFormat(detailFeed.created_at);
   return (
-    <section className="feedview-section">
-      <div className="feed-item main-feed">
-        <div className="feed-item-content">
-          <div className="feed-item-title">
-            Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title
-            Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title
-            Title Title Title Title Title Title Title Title Title Title Title Title Title
-          </div>
-          <div className="feed-item-description">
-            contents contents contents contents contents contents contents contents contents contents contents contents
-            contents contents contents contents contents contents contents contents contents contents contents contents
-            contents contents contents contents contents contents contents contents contents contents contents contents
-            contents contents contents contents contents contents contents contents contents contents contents contents
-            contents contents contents contents
-          </div>
-        </div>
-        <div className="feed-item-info">
-          <div className="feed-item-info-create">created_at(2020-02-02)</div>
-        </div>
-      </div>
-
-      <div className="feedview-comment-wrap">
-        <div className="comment-head">
-          답변 <span className="comment-length">2</span>
-        </div>
-
-        <div className="feedview-item-wrap">
-          <div className="feed-item">
-            <div className="feed-item-user-name">reply_user_name</div>
+    <>
+      {detailFeed && (
+        <section className="feedview-section">
+          <div className="feed-item main-feed">
             <div className="feed-item-content">
-              <div className="feed-item-description">
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents
-              </div>
+              <div className="feed-item-title">{detailFeed.title}</div>
+              <div className="feed-item-description">{detailFeed.contents}</div>
             </div>
             <div className="feed-item-info">
-              <div className="feed-item-info-create">created_at(2020-02-02)</div>
+              <div className="feed-item-info-create">{feedCreatedAt}</div>
             </div>
           </div>
 
-          <div className="feed-item">
-            <div className="feed-item-user-name">reply_user_name</div>
-            <div className="feed-item-content">
-              <div className="feed-item-description">
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents
-              </div>
+          <div className="feedview-comment-wrap">
+            <div className="comment-head">
+              답변 <span className="comment-length">{detailFeed.reply.length}</span>
             </div>
-            <div className="feed-item-info">
-              <div className="feed-item-info-create">created_at(2020-02-02)</div>
-            </div>
+
+            {detailFeed.reply.map(reply => {
+              const replyCreatedAt = replaceDateFormat(reply.created_at);
+              return (
+                <div className="feedview-item-wrap">
+                  <div className="feed-item">
+                    <div className="feed-item-user-name">{reply.user.name}</div>
+                    <div className="feed-item-content">
+                      <div className="feed-item-description">{reply.contents}</div>
+                    </div>
+                    <div className="feed-item-info">
+                      <div className="feed-item-info-create">{replyCreatedAt}</div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      )}
+    </>
   );
 };
 
-export default FeedViewSection;
+export default withRouter(FeedViewSection);
