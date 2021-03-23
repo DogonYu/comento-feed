@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useReadFilterCategory from 'src/hooks/useReadFilterCategory';
 
 const FeedListSection = () => {
   const [filterModalShow, setFilterModalShow] = useState(false);
   const [isActive, setIsActive] = useState({ asc: true, desc: false });
+  const { categorys } = useReadFilterCategory();
   const onClickAsc = () => setIsActive({ asc: true, desc: false });
   const onClickDesc = () => setIsActive({ asc: false, desc: true });
   const onFilterModalShow = () => setFilterModalShow(true);
@@ -25,25 +27,19 @@ const FeedListSection = () => {
           <button className="option-filter-btn" type="button" onClick={onFilterModalShow}>
             필터
           </button>
-          {filterModalShow ? (
+          {filterModalShow && categorys ? (
             <>
               <div className="modal-overlay" onClick={onFilterModalClose} />
               <div className="option-filter-modal">
                 <div className="modal-inner">
                   <div className="modal-close" onClick={onFilterModalClose} />
                   <h2>필터</h2>
-                  <div className="modal-filter-category">
-                    <input type="checkbox" id="category1" />
-                    <label htmlFor="category1">category_name</label>
-                  </div>
-                  <div className="modal-filter-category">
-                    <input type="checkbox" id="category2" />
-                    <label htmlFor="category2">category_name</label>
-                  </div>
-                  <div className="modal-filter-category">
-                    <input type="checkbox" id="category3" />
-                    <label htmlFor="category3">category_name</label>
-                  </div>
+                  {categorys.category.map(category => (
+                    <div className="modal-filter-category">
+                      <input type="checkbox" id={category.id} />
+                      <label htmlFor={category.id}>{category.name}</label>
+                    </div>
+                  ))}
                   <div className="modal-btn-wrap">
                     <button className="modal-save-btn" type="button" onClick={onFilterModalClose}>
                       저장하기
