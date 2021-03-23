@@ -10,7 +10,7 @@ import replaceDateFormat from 'src/api/replaceDateFormat';
 const FeedListSection = () => {
   const target = useRef();
   const { filterCategory } = useSetFilter();
-  const { feeds } = useReadFeeds();
+  const { feeds } = useReadFeeds({ target });
   const { categorys } = useReadFilterCategorys({ category: filterCategory });
   const { ads } = useReadAds();
   return (
@@ -31,6 +31,7 @@ const FeedListSection = () => {
       )}
 
       {feeds &&
+        categorys &&
         feeds.data.map(feed => {
           const createdAt = replaceDateFormat(feed.created_at);
           return (
@@ -57,7 +58,7 @@ const FeedListSection = () => {
             </div>
           );
         })}
-      <div className="infinite-scroll-target" ref={target} />
+      {feeds.data.length && <div className="infinite-scroll-target" ref={target} />}
     </section>
   );
 };

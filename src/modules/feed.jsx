@@ -36,7 +36,9 @@ export function* feedSaga() {
 }
 
 const initialState = {
-  feeds: null,
+  feeds: {
+    data: [],
+  },
   categorys: null,
   ads: null,
   detailFeed: null,
@@ -53,7 +55,10 @@ export default handleActions(
     [READ_FEEDS_SUCCESS]: (state, { payload: feeds }) => {
       return {
         ...state,
-        feeds,
+        feeds: {
+          ...feeds,
+          data: state.feeds.data.concat(feeds.data),
+        },
       };
     },
     [READ_FEEDS_ERROR]: (state, { payload: feedsError }) => {
