@@ -8,7 +8,7 @@ export const readFeeds = ({ page, ord, category, limit }) => {
   return API.get(`/api/list`, { page, ord, category, limit });
 };
 
-export const filterCategory = () => {
+export const readFilterCategory = () => {
   return API.get(`/api/category`);
 };
 
