@@ -156,107 +156,185 @@ header {
       }
     }
   }
-  .feedlist-item-wrap {
+  .feed-item {
     margin-top: 11px;
-    .feed-item {
-      width: 100%;
-      border: 1px solid #e1e4e7;
-      border-radius: 5px;
-      padding: 20px 30px;
-      font-size: 13px;
-      .feed-item-category {
-        display: flex;
-        justify-content: space-between;
-        color: #7e848a;
-        padding-bottom: 11px;
-        border-bottom: 1px solid #e1e4e7;
-        margin-bottom: 15px;
+    width: 100%;
+    border: 1px solid #e1e4e7;
+    border-radius: 5px;
+    padding: 20px 30px;
+    font-size: 13px;
+    .feed-item-category {
+      display: flex;
+      justify-content: space-between;
+      color: #7e848a;
+      padding-bottom: 11px;
+      border-bottom: 1px solid #e1e4e7;
+      margin-bottom: 15px;
+    }
+    .feed-item-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 17px;
+      .separator {
+        width: 1px;
+        height: 15px;
+        background-color: #e1e4e7;
+        margin: 0 10px;
       }
-      .feed-item-info {
-        display: flex;
-        align-items: center;
-        margin-bottom: 17px;
-        .separator {
-          width: 1px;
-          height: 15px;
-          background-color: #e1e4e7;
-          margin: 0 10px;
-        }
-        .feed-item-info-userId {
-          color: #00c854;
-        }
-        .feed-item-info-create {
-          color: #495057;
-        }
+      .feed-item-info-userId {
+        color: #00c854;
       }
-      .feed-item-content {
-        .feed-item-title,
-        .feed-item-description {
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          cursor: pointer;
-        }
-        .feed-item-title {
-          font-size: 18px;
-          font-weight: bold;
-          color: #282c30;
-          margin-bottom: 6px;
-        }
-        .feed-item-description {
-          font-size: 16px;
-          color: #495057;
-        }
+      .feed-item-info-create {
+        color: #495057;
       }
     }
-    .feed-ads {
-      width: 100%;
-      padding: 20px 30px;
-      border: 1px solid #e1e4e7;
-      border-radius: 5px;
-      .feed-ads-category {
-        font-size: 13px;
-        color: #adb5bd;
-      }
-      .feed-ads-content {
-        margin-top: 16.5px;
-        display: flex;
+    .feed-item-content {
+      .feed-item-title,
+      .feed-item-description {
         overflow: hidden;
-        .feed-ads-title,
-        .feed-ads-description {
-          display: -webkit-box;
-          cursor: pointer;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          word-break: break-all;
-        }
-        .feed-ads-image {
-          cursor: pointer;
-          width: 310px;
-          height: 179px;
-          margin-right: 29.5px;
-        }
-        .feed-ads-title {
-          font-size: 18px;
-          font-weight: bold;
-          color: #282c30;
-          margin-bottom: 11px;
-          -webkit-line-clamp: 2;
-          height: 55px;
-        }
-        .feed-ads-description {
-          font-size: 16px;
-          color: #495057;
-          -webkit-line-clamp: 4;
-          height: 99px;
-        }
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        cursor: pointer;
+      }
+      .feed-item-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #282c30;
+        margin-bottom: 6px;
+      }
+      .feed-item-description {
+        font-size: 16px;
+        color: #495057;
       }
     }
   }
-  .feed-item + .feed-ads,
-  .feed-item + .feed-item,
-  .feed-ads + .feed-item {
+  .feed-ads {
+    width: 100%;
+    padding: 20px 30px;
+    border: 1px solid #e1e4e7;
+    border-radius: 5px;
+    .feed-ads-category {
+      font-size: 13px;
+      color: #adb5bd;
+    }
+    .feed-ads-content {
+      margin-top: 16.5px;
+      display: flex;
+      overflow: hidden;
+      .feed-ads-title,
+      .feed-ads-description {
+        display: -webkit-box;
+        cursor: pointer;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+      }
+      .feed-ads-image {
+        cursor: pointer;
+        width: 310px;
+        height: 179px;
+        margin-right: 29.5px;
+      }
+      .feed-ads-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #282c30;
+        margin-bottom: 11px;
+        -webkit-line-clamp: 2;
+        height: 55px;
+      }
+      .feed-ads-description {
+        font-size: 16px;
+        color: #495057;
+        -webkit-line-clamp: 4;
+        height: 99px;
+      }
+    }
+  }
+}
+.feed-item + .feed-ads,
+.feed-item + .feed-item,
+.feed-ads + .feed-item {
+  margin-top: 30px;
+}
+.feedview-wrap {
+  display: flex;
+  font-family: 'Spoqa Han Sans', sans-serif;
+  font-weight: 400;
+  margin: 0 390px;
+  margin-top: 50px;
+}
+.feedview-section {
+  width: 100%;
+  overflow: hidden;
+  .feedview-item-wrap {
+    margin-top: 10px;
+  }
+  .feed-item {
+    width: 100%;
+    border: 1px solid #e1e4e7;
+    border-radius: 5px;
+    padding: 20px 30px;
+    font-size: 13px;
+    .feed-item-category {
+      display: flex;
+      justify-content: space-between;
+      color: #7e848a;
+      padding-bottom: 11px;
+      border-bottom: 1px solid #e1e4e7;
+      margin-bottom: 15px;
+    }
+    .feed-item-user-name {
+      font-size: 16px;
+      color: #7e848a;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e1e4e7;
+      margin-bottom: 16px;
+    }
+    .feed-item-info {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      .feed-item-info-create {
+        font-size: 13px;
+        color: #adb5bd;
+      }
+    }
+    .feed-item-content {
+      .feed-item-title,
+      .feed-item-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+      }
+      .feed-item-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #282c30;
+        margin-bottom: 6px;
+        -webkit-line-clamp: 2;
+        height: 55px;
+      }
+      .feed-item-description {
+        font-size: 16px;
+        color: #495057;
+        -webkit-line-clamp: 3;
+        height: 74px;
+      }
+    }
+  }
+  .feedview-comment-wrap {
     margin-top: 30px;
+    color: #495057;
+    font-size: 16px;
+    .comment-length {
+      color: #00c854;
+    }
+  }
+  .main-feed {
+    border-color: #00c854;
   }
 }
