@@ -16,10 +16,13 @@ a {
 header {
   display: flex;
   align-items: center;
-  padding: 0 390px;
   height: 70px;
   box-shadow: 0 1px 5px 0 #00000012;
   font-family: 'Noto Sans KR', sans-serif;
+  div {
+    width: 1140px;
+    margin: 0 auto;
+  }
 }
 .feedlist-wrap {
   display: flex;
@@ -144,6 +147,7 @@ header {
             justify-content: flex-end;
             margin-top: 30px;
             .modal-save-btn {
+              font-size: 16px;
               cursor: pointer;
               width: 100px;
               height: 40px;
@@ -229,11 +233,15 @@ header {
         text-overflow: ellipsis;
         word-break: break-all;
       }
-      .feed-ads-image {
-        flex: 0 0 310px;
+      .feed-ads-image-wrap {
+        min-width: 310px;
         height: 180px;
-        object-fit: cover;
         margin-right: 29.5px;
+      }
+      .feed-ads-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
       .feed-ads-title {
         font-size: 18px;
@@ -278,14 +286,6 @@ header {
     border-radius: 5px;
     padding: 20px 30px;
     font-size: 13px;
-    .feed-item-category {
-      display: flex;
-      justify-content: space-between;
-      color: #7e848a;
-      padding-bottom: 11px;
-      border-bottom: 1px solid #e1e4e7;
-      margin-bottom: 15px;
-    }
     .feed-item-user-name {
       font-size: 16px;
       color: #7e848a;
@@ -325,5 +325,116 @@ header {
   }
   .main-feed {
     border-color: #00c854;
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    max-width: 768px;
+  }
+  header {
+    padding: 10px 15px;
+    height: 45px;
+    box-shadow: 0 2px 3px 0 #00000012;
+    div {
+      width: 100%;
+    }
+  }
+  .feedlist-aside {
+    display: none;
+  }
+  .feedlist-wrap {
+    margin: 0;
+    width: 100%;
+  }
+  .feedlist-section {
+    .feedlist-option-wrap {
+      padding: 10px 15px;
+      margin-bottom: 0;
+      border-bottom: 1px solid #e1e4e7;
+      .option-filter-wrap {
+        .option-filter-modal {
+          position: fixed;
+          right: 20%;
+          top: 30%;
+          .modal-inner {
+            .modal-btn-wrap {
+              .modal-save-btn {
+                font-size: 16px;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .feed-wrap {
+      background-color: #f4f5f7;
+      .feed-item {
+        width: 100%;
+        background-color: white;
+        border: 0;
+        border-radius: 0;
+        padding: 20px 15px;
+        box-shadow: 0 5px 10px 0 #0000000d;
+        .feed-item-category {
+          margin-bottom: 16px;
+        }
+        .feed-item-info {
+          margin-bottom: 16px;
+          .separator,
+          .feed-item-info-create {
+            display: none;
+          }
+        }
+      }
+      .feed-ads {
+        background-color: white;
+        border: 0;
+        border-radius: 0;
+        padding: 20px 15px;
+        box-shadow: 0 5px 10px 0 #0000000d;
+        .feed-ads-content {
+          flex-direction: column;
+          .feed-ads-image-wrap {
+            min-width: 345px;
+            height: 180px;
+            margin-right: 0;
+          }
+          .feed-ads-title {
+            margin-top: 16.5px;
+            margin-bottom: 6px;
+          }
+          .feed-ads-description {
+            -webkit-line-clamp: 2;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
+  .feedview-wrap {
+    margin: 0;
+    width: 100%;
+    margin: 20px 15px;
+  }
+  .feedview-section {
+    max-width: 96%;
+    .feed-item {
+      border: 0;
+      border-top: 1px solid #e1e4e7;
+      border-bottom: 1px solid #e1e4e7;
+      border-radius: 0;
+      padding: 20px 0;
+      .feed-item-info {
+        margin-top: 16px;
+      }
+    }
+    .main-feed {
+      border-color: #00c854;
+    }
+  }
+  .feed-link + .feed-ads,
+  .feed + .feed {
+    margin-top: 10px;
   }
 }
