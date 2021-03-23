@@ -40,7 +40,9 @@ const initialState = {
     data: [],
   },
   categorys: null,
-  ads: null,
+  ads: {
+    data: [],
+  },
   detailFeed: null,
   ordType: 'asc',
   filterCategory: [1, 2, 3],
