@@ -56,46 +56,44 @@ const FeedListSection = () => {
         </div>
       </div>
 
-      <div className="feedlist-item-wrap">
-        <div className="feed-item">
-          <div className="feed-item-category">
-            <div className="feed-item-category-name">category_name</div>
-            <div className="feed-item-category-id">id</div>
-          </div>
-          <div className="feed-item-info">
-            <div className="feed-item-info-userId">user_id</div>
-            <div className="separator" />
-            <div className="feed-item-info-create">created_at(2020-02-02)</div>
-          </div>
-          <Link to="/view/1">
-            <div className="feed-item-content">
-              <div className="feed-item-title">
-                Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title
-                Title Title Title Title Title Title Title
-              </div>
-              <div className="feed-item-description">
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-              </div>
-            </div>
-          </Link>
+      <div className="feed-item">
+        <div className="feed-item-category">
+          <div className="feed-item-category-name">category_name</div>
+          <div className="feed-item-category-id">id</div>
         </div>
+        <div className="feed-item-info">
+          <div className="feed-item-info-userId">user_id</div>
+          <div className="separator" />
+          <div className="feed-item-info-create">created_at(2020-02-02)</div>
+        </div>
+        <Link to="/view/1">
+          <div className="feed-item-content">
+            <div className="feed-item-title">
+              Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title
+              Title Title Title Title Title Title Title
+            </div>
+            <div className="feed-item-description">
+              contents contents contents contents contents contents contents contents contents contents contents
+              contents contents contents contents contents contents contents contents contents contents contents
+            </div>
+          </div>
+        </Link>
+      </div>
 
-        <div className="feed-ads">
-          <div className="feed-ads-category">sponsored</div>
-          <div className="feed-ads-content">
-            <img className="feed-ads-image" src="" alt="" />
-            <div className="feed-ads-text">
-              <div className="feed-ads-title">
-                Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title
-                Title Title Title Title Title Title Title
-              </div>
-              <div className="feed-ads-description">
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-                contents contents contents contents contents contents contents contents contents contents contents
-              </div>
+      <div className="feed-ads">
+        <div className="feed-ads-category">sponsored</div>
+        <div className="feed-ads-content">
+          <img className="feed-ads-image" src="" alt="" />
+          <div className="feed-ads-text">
+            <div className="feed-ads-title">
+              Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title
+              Title Title Title Title Title Title Title
+            </div>
+            <div className="feed-ads-description">
+              contents contents contents contents contents contents contents contents contents contents contents
+              contents contents contents contents contents contents contents contents contents contents contents
+              contents contents contents contents contents contents contents contents contents contents contents
+              contents contents contents contents contents contents contents contents contents contents contents
             </div>
           </div>
         </div>
