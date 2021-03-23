@@ -82,7 +82,10 @@ export default handleActions(
     [READ_ADS_SUCCESS]: (state, { payload: ads }) => {
       return {
         ...state,
-        ads,
+        ads: {
+          ...ads,
+          data: state.ads.data.concat(ads.data),
+        },
       };
     },
     [READ_ADS_ERROR]: (state, { payload: adError }) => {
