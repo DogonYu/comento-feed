@@ -120,7 +120,12 @@ export default handleActions(
         filterCategory,
       };
     },
-    [INITIALIZE]: () => initialState,
+    [INITIALIZE]: state => {
+      return {
+        ...state,
+        feeds: initialState.feeds,
+      };
+    },
   },
   initialState,
 );

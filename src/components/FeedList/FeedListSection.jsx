@@ -23,8 +23,8 @@ const FeedListSection = () => {
     <section className="feedlist-section">
       {categorys && <FeedListOption categorys={categorys} />}
 
-      {feeds.data.length &&
-        ads.data.length &&
+      {feeds.data.length > 0 &&
+        ads.data.length > 0 &&
         categorys &&
         feeds.data.map(feed => {
           const createdAt = replaceDateFormat(feed.created_at);
