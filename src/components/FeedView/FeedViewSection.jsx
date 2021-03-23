@@ -29,7 +29,7 @@ const FeedViewSection = ({ match }) => {
             {detailFeed.reply.map(reply => {
               const replyCreatedAt = replaceDateFormat(reply.created_at);
               return (
-                <div className="feedview-item-wrap">
+                <div key={reply.id} className="feedview-item-wrap">
                   <div className="feed-item">
                     <div className="feed-item-user-name">{reply.user.name}</div>
                     <div className="feed-item-content">
