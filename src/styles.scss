@@ -307,27 +307,15 @@ header {
       }
     }
     .feed-item-content {
-      .feed-item-title,
-      .feed-item-description {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        word-break: break-all;
-      }
       .feed-item-title {
         font-size: 18px;
         font-weight: bold;
         color: #282c30;
         margin-bottom: 6px;
-        -webkit-line-clamp: 2;
-        height: 55px;
       }
       .feed-item-description {
         font-size: 16px;
         color: #495057;
-        -webkit-line-clamp: 3;
-        height: 74px;
       }
     }
   }
