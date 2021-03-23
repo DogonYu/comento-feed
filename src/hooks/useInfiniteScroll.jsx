@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useInfiniteScroll = ({ root = null, target, checkIntersect, threshold = 0.5, rootMargin = '0px' }) => {
+const useInfiniteScroll = ({ root = null, target, checkIntersect, threshold = 1, rootMargin = '0px' }) => {
   const options = {
     root,
     rootMargin,

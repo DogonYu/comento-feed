@@ -7,7 +7,7 @@ const useReadAds = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(readAds({ page: 1, limit: 10 }));
+    dispatch(readAds({ page: 1, limit: 100 }));
   }, [dispatch]);
 
   return { ads };
