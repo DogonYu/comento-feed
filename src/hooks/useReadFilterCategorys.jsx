@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { readFilterCategory } from 'src/modules/feed';
+import { readFilterCategorys } from 'src/modules/feed';
 
-const useReadBooks = () => {
+const useReadFilterCategorys = () => {
   const { categorys } = useSelector(({ feed }) => feed, []);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(readFilterCategory());
+    dispatch(readFilterCategorys());
   }, [dispatch]);
 
   return { categorys };
 };
 
-export default useReadBooks;
+export default useReadFilterCategorys;

@@ -1,99 +1,63 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import useReadFilterCategory from 'src/hooks/useReadFilterCategory';
+import FeedListOption from 'src/components/FeedList/FeedListOption';
+import useSetFilter from 'src/hooks/useSetFilter';
+import useReadFeeds from 'src/hooks/useReadFeeds';
+import useReadFilterCategorys from 'src/hooks/useReadFilterCategorys';
+import useReadAds from 'src/hooks/useReadAds';
+import replaceDateFormat from 'src/api/replaceDateFormat';
 
 const FeedListSection = () => {
-  const [filterModalShow, setFilterModalShow] = useState(false);
-  const [isActive, setIsActive] = useState({ asc: true, desc: false });
-  const { categorys } = useReadFilterCategory();
-  const onClickAsc = () => setIsActive({ asc: true, desc: false });
-  const onClickDesc = () => setIsActive({ asc: false, desc: true });
-  const onFilterModalShow = () => setFilterModalShow(true);
-  const onFilterModalClose = () => setFilterModalShow(false);
+  const target = useRef();
+  const { filterCategory } = useSetFilter();
+  const { feeds } = useReadFeeds();
+  const { categorys } = useReadFilterCategorys({ category: filterCategory });
+  const { ads } = useReadAds();
   return (
     <section className="feedlist-section">
-      <div className="feedlist-option-wrap">
-        <div className="option-ord-wrap">
-          <div className={isActive.asc ? `option-ord-btn active` : 'option-ord-btn'} onClick={onClickAsc}>
-            <div className="option-ord-circle" />
-            오름차순
-          </div>
-          <div className={isActive.desc ? `option-ord-btn active` : 'option-ord-btn'} onClick={onClickDesc}>
-            <div className="option-ord-circle" />
-            내림차순
+      {categorys && <FeedListOption categorys={categorys} />}
+
+      {ads && (
+        <div className="feed-ads">
+          <div className="feed-ads-category">sponsored</div>
+          <div className="feed-ads-content">
+            <img className="feed-ads-image" src={`https://cdn.comento.kr/assignment/${ads.data[0].img}`} alt="" />
+            <div className="feed-ads-text">
+              <div className="feed-ads-title">{ads.data[0].title}</div>
+              <div className="feed-ads-description">{ads.data[0].contents}</div>
+            </div>
           </div>
         </div>
-        <div className="option-filter-wrap">
-          <button className="option-filter-btn" type="button" onClick={onFilterModalShow}>
-            필터
-          </button>
-          {filterModalShow && categorys ? (
-            <>
-              <div className="modal-overlay" onClick={onFilterModalClose} />
-              <div className="option-filter-modal">
-                <div className="modal-inner">
-                  <div className="modal-close" onClick={onFilterModalClose} />
-                  <h2>필터</h2>
-                  {categorys.category.map(category => (
-                    <div className="modal-filter-category">
-                      <input type="checkbox" id={category.id} />
-                      <label htmlFor={category.id}>{category.name}</label>
+      )}
+
+      {feeds &&
+        feeds.data.map(feed => {
+          const createdAt = replaceDateFormat(feed.created_at);
+          return (
+            <div key={feed.id} className="feed-link">
+              <Link to={`/view/${feed.id}`}>
+                <div className="feed-item">
+                  <div className="feed-item-category">
+                    <div className="feed-item-category-name">
+                      {categorys.category.filter(category => category.id === feed.category_id)[0].name}
                     </div>
-                  ))}
-                  <div className="modal-btn-wrap">
-                    <button className="modal-save-btn" type="button" onClick={onFilterModalClose}>
-                      저장하기
-                    </button>
+                    <div className="feed-item-category-id">{feed.id}</div>
+                  </div>
+                  <div className="feed-item-info">
+                    <div className="feed-item-info-userId">{feed.user_id}</div>
+                    <div className="separator" />
+                    <div className="feed-item-info-create">{createdAt}</div>
+                  </div>
+                  <div className="feed-item-content">
+                    <div className="feed-item-title">{feed.title}</div>
+                    <div className="feed-item-description">{feed.contents}</div>
                   </div>
                 </div>
-              </div>
-            </>
-          ) : null}
-        </div>
-      </div>
-
-      <div className="feed-item">
-        <div className="feed-item-category">
-          <div className="feed-item-category-name">category_name</div>
-          <div className="feed-item-category-id">id</div>
-        </div>
-        <div className="feed-item-info">
-          <div className="feed-item-info-userId">user_id</div>
-          <div className="separator" />
-          <div className="feed-item-info-create">created_at(2020-02-02)</div>
-        </div>
-        <Link to="/view/1">
-          <div className="feed-item-content">
-            <div className="feed-item-title">
-              Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title
-              Title Title Title Title Title Title Title
+              </Link>
             </div>
-            <div className="feed-item-description">
-              contents contents contents contents contents contents contents contents contents contents contents
-              contents contents contents contents contents contents contents contents contents contents contents
-            </div>
-          </div>
-        </Link>
-      </div>
-
-      <div className="feed-ads">
-        <div className="feed-ads-category">sponsored</div>
-        <div className="feed-ads-content">
-          <img className="feed-ads-image" src="" alt="" />
-          <div className="feed-ads-text">
-            <div className="feed-ads-title">
-              Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title Title
-              Title Title Title Title Title Title Title
-            </div>
-            <div className="feed-ads-description">
-              contents contents contents contents contents contents contents contents contents contents contents
-              contents contents contents contents contents contents contents contents contents contents contents
-              contents contents contents contents contents contents contents contents contents contents contents
-              contents contents contents contents contents contents contents contents contents contents contents
-            </div>
-          </div>
-        </div>
-      </div>
+          );
+        })}
+      <div className="infinite-scroll-target" ref={target} />
     </section>
   );
 };
