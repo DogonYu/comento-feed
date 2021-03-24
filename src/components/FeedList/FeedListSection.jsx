@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import FeedListOption from 'src/components/FeedList/FeedListOption';
 import useSetFilter from 'src/hooks/useSetFilter';
+import useSetHideAds from 'src/hooks/useSetHideAds';
 import useReadFeeds from 'src/hooks/useReadFeeds';
 import useReadFilterCategorys from 'src/hooks/useReadFilterCategorys';
 import useReadAds from 'src/hooks/useReadAds';
@@ -11,6 +12,7 @@ const FeedListSection = () => {
   const target = useRef();
   const [isMount, setIsMount] = useState(false);
   const { filterCategory } = useSetFilter();
+  const { isHideAds } = useSetHideAds();
   const { feeds } = useReadFeeds({ target });
   const { categorys } = useReadFilterCategorys({ category: filterCategory });
   const { ads } = useReadAds();
@@ -52,7 +54,7 @@ const FeedListSection = () => {
                     </div>
                   </Link>
                 </div>
-                {feed.id % 3 === 0 ? (
+                {feed.id % 3 === 0 && !isHideAds ? (
                   <div key={`ads-${ads.data[feed.id].id}`} className="feed-ads">
                     <div className="feed-ads-category">sponsored</div>
                     <div className="feed-ads-content">

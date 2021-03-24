@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import useSetOrd from 'src/hooks/useSetOrd';
 import useSetFilter from 'src/hooks/useSetFilter';
+import useSetHideAds from 'src/hooks/useSetHideAds';
 
 const FeedListOption = ({ categorys }) => {
   const [filterModalShow, setFilterModalShow] = useState(false);
   const [filtering, setFiltering] = useState([1, 2, 3]);
   const { onSetFilter } = useSetFilter();
   const { ordType, onSetOrd } = useSetOrd();
+  const { isHideAds, onSetHideAds } = useSetHideAds();
   const onClickAsc = () => onSetOrd('asc');
   const onClickDesc = () => onSetOrd('desc');
   const onFilterModalShow = () => setFilterModalShow(true);
@@ -37,6 +39,9 @@ const FeedListOption = ({ categorys }) => {
         </div>
       </div>
       <div className="option-filter-wrap">
+        <button className="option-filter-btn option-ads-hide-btn" type="button" onClick={onSetHideAds}>
+          {!isHideAds ? '광고 가리기' : '광고 보기'}
+        </button>
         <button className="option-filter-btn" type="button" onClick={onFilterModalShow}>
           필터
         </button>

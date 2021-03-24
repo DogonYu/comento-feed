@@ -13,6 +13,7 @@ const [READ_DETAIL_FEED, READ_DETAIL_FEED_SUCCESS, READ_DETAIL_FEED_ERROR] = cre
 );
 const SET_ORD = 'feed/SET_ORD';
 const SET_FILTER = 'feed/SET_FILTER';
+const SET_HIDE_ADS = 'feed/SET_HIDE_ADS';
 const INITIALIZE = 'feed/INITIALIZE';
 
 export const readFeeds = createAction(READ_FEEDS, ({ page, ord, category, limit }) => ({ page, ord, category, limit }));
@@ -21,6 +22,7 @@ export const readAds = createAction(READ_ADS, ({ page, limit }) => ({ page, limi
 export const readDetailFeed = createAction(READ_DETAIL_FEED, id => id);
 export const setOrd = createAction(SET_ORD, ord => ord);
 export const setFilter = createAction(SET_FILTER, filter => filter);
+export const setHideAds = createAction(SET_HIDE_ADS, isHideAds => isHideAds);
 export const initialize = createAction(INITIALIZE);
 
 const readFeedsSaga = createRequestSaga(READ_FEEDS, api.readFeeds);
@@ -46,6 +48,7 @@ const initialState = {
   detailFeed: null,
   ordType: 'asc',
   filterCategory: [1, 2, 3],
+  isHideAds: false,
   feedsError: null,
   categoryError: null,
   adError: null,
@@ -118,6 +121,12 @@ export default handleActions(
       return {
         ...state,
         filterCategory,
+      };
+    },
+    [SET_HIDE_ADS]: (state, { payload: isHideAds }) => {
+      return {
+        ...state,
+        isHideAds,
       };
     },
     [INITIALIZE]: state => {

@@ -83,6 +83,10 @@ header {
       }
     }
     .option-filter-wrap {
+      display: flex;
+      button + button {
+        margin-left: 10px;
+      }
       .option-filter-btn {
         width: 48px;
         height: 24px;
@@ -92,6 +96,9 @@ header {
         border: 1px solid #e1e4e7;
         border-radius: 3px;
         font-size: 13px;
+      }
+      .option-ads-hide-btn {
+        width: 100px;
       }
       .modal-overlay {
         position: fixed;
