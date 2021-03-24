@@ -44,26 +44,24 @@ const FeedListOption = ({ categorys }) => {
           <>
             <div className="modal-overlay" onClick={onFilterModalClose} />
             <div className="option-filter-modal">
-              <div className="modal-inner">
-                <div className="modal-close" onClick={onFilterModalClose} />
-                <h2>필터</h2>
-                {categorys.category.map(category => (
-                  <div key={category.id} className="modal-filter-category">
-                    <input
-                      type="checkbox"
-                      id={category.id}
-                      checked={filtering.includes(category.id)}
-                      onChange={onChangeFilter}
-                      value={category.id}
-                    />
-                    <label htmlFor={category.id}>{category.name}</label>
-                  </div>
-                ))}
-                <div className="modal-btn-wrap">
-                  <button className="modal-save-btn" type="button" onClick={onFilterSave}>
-                    저장하기
-                  </button>
+              <div className="modal-close" onClick={onFilterModalClose} />
+              <h2>필터</h2>
+              {categorys.category.map(category => (
+                <div key={category.id} className="modal-filter-category">
+                  <input
+                    type="checkbox"
+                    id={category.id}
+                    checked={filtering.includes(category.id)}
+                    onChange={onChangeFilter}
+                    value={category.id}
+                  />
+                  <label htmlFor={category.id}>{category.name}</label>
                 </div>
+              ))}
+              <div className="modal-btn-wrap">
+                <button className="modal-save-btn" type="button" onClick={onFilterSave}>
+                  저장하기
+                </button>
               </div>
             </div>
           </>
