@@ -40,7 +40,7 @@ const FeedListSection = () => {
                         <div className="feed-item-category-name">
                           {categorys.category.filter(category => category.id === feed.category_id)[0].name}
                         </div>
-                        <div className="feed-item-category-id">{feed.id}</div>
+                        <div className="feed-item-category-id">글 번호: {feed.id}</div>
                       </div>
                       <div className="feed-item-info">
                         <div className="feed-item-info-userId">{feed.user_id}</div>
