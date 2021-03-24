@@ -54,7 +54,7 @@ const FeedListSection = () => {
                     </div>
                   </Link>
                 </div>
-                {feed.id % 3 === 0 && !isHideAds ? (
+                {feed.id % 5 === 0 && !isHideAds ? (
                   <div key={`ads-${ads.data[feed.id].id}`} className="feed-ads">
                     <div className="feed-ads-category">sponsored</div>
                     <div className="feed-ads-content">
