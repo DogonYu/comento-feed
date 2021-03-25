@@ -9,11 +9,6 @@ html {
 }
 body {
   margin: 0;
-  -ms-user-select: none;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
 }
 a {
   text-decoration: none;
@@ -298,6 +293,16 @@ header {
 .feed-ads + .feed-link,
 .feed + .feed {
   margin-top: 30px;
+}
+.feed-item-content {
+  .feed-item-title,
+  .feed-item-description {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
 }
 .feedview-wrap {
   display: flex;
