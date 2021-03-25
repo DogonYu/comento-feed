@@ -6,13 +6,13 @@ const useReadFeeds = () => {
   const { feeds, ordType, filterCategory } = useSelector(({ feed }) => feed, []);
   const dispatch = useDispatch();
 
-  const limit = 10;
+  const LIMIT = 20;
   useEffect(() => {
-    dispatch(readFeeds({ page: 1, ord: ordType, category: filterCategory, limit }));
+    dispatch(readFeeds({ page: 1, ord: ordType, category: filterCategory, limit: LIMIT }));
     return () => dispatch(initialize());
   }, [dispatch, ordType, filterCategory]);
 
-  const onReadFeeds = page => dispatch(readFeeds({ page, ord: ordType, category: filterCategory, limit }));
+  const onReadFeeds = page => dispatch(readFeeds({ page, ord: ordType, category: filterCategory, limit: LIMIT }));
 
   return { feeds, onReadFeeds };
 };
