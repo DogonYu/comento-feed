@@ -442,6 +442,11 @@ header {
             min-width: 345px;
             height: 180px;
             margin-right: 0;
+            .feed-ads-image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
           }
           .feed-ads-title {
             margin-top: 16.5px;
