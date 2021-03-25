@@ -15,7 +15,7 @@ const FeedListSection = () => {
   const { categorys } = useReadFilterCategorys({ category: filterCategory });
   const { ads } = useReadAds();
 
-  const FEED_PER_ADS = 5;
+  const FEED_PER_ADS = 10;
 
   return (
     <section className="feedlist-section">
