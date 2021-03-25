@@ -106,8 +106,11 @@ header {
           color: #00c854;
           border-color: #00c854;
         }
-        .current-filter:before {
+        .current-filter:after {
           content: ', ';
+        }
+        .current-filter:last-child::after {
+          content: none;
         }
       }
       .option-ads-hide-btn {
