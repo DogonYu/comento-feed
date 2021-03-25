@@ -1,14 +1,16 @@
 import { createAction, handleActions } from 'redux-actions';
 import { takeLatest } from 'redux-saga/effects';
-import * as api from 'src/api/api';
-import createRequestSaga, { createRequestActionTypes } from 'src/api/createRequestSaga';
+import api from 'src/api/api';
+import reduxUtils from 'src/api/reduxUtils';
 
-const [READ_FEEDS, READ_FEEDS_SUCCESS, READ_FEEDS_ERROR] = createRequestActionTypes('feed/READ_FEEDS');
-const [READ_FILTER_CATEGORYS, READ_FILTER_CATEGORYS_SUCCESS, READ_FILTER_CATEGORYS_ERROR] = createRequestActionTypes(
-  'feed/READ_FILTER_CATEGORYS',
-);
-const [READ_ADS, READ_ADS_SUCCESS, READ_ADS_ERROR] = createRequestActionTypes('feed/READ_ADS');
-const [READ_DETAIL_FEED, READ_DETAIL_FEED_SUCCESS, READ_DETAIL_FEED_ERROR] = createRequestActionTypes(
+const [READ_FEEDS, READ_FEEDS_SUCCESS, READ_FEEDS_ERROR] = reduxUtils.createRequestActionTypes('feed/READ_FEEDS');
+const [
+  READ_FILTER_CATEGORYS,
+  READ_FILTER_CATEGORYS_SUCCESS,
+  READ_FILTER_CATEGORYS_ERROR,
+] = reduxUtils.createRequestActionTypes('feed/READ_FILTER_CATEGORYS');
+const [READ_ADS, READ_ADS_SUCCESS, READ_ADS_ERROR] = reduxUtils.createRequestActionTypes('feed/READ_ADS');
+const [READ_DETAIL_FEED, READ_DETAIL_FEED_SUCCESS, READ_DETAIL_FEED_ERROR] = reduxUtils.createRequestActionTypes(
   'feed/READ_DETAIL_FEED',
 );
 const SET_ORD = 'feed/SET_ORD';
@@ -25,10 +27,10 @@ export const setFilter = createAction(SET_FILTER, filter => filter);
 export const setHideAds = createAction(SET_HIDE_ADS, isHideAds => isHideAds);
 export const initialize = createAction(INITIALIZE);
 
-const readFeedsSaga = createRequestSaga(READ_FEEDS, api.readFeeds);
-const readFilterCategorysSaga = createRequestSaga(READ_FILTER_CATEGORYS, api.readFilterCategorys);
-const readAdsSaga = createRequestSaga(READ_ADS, api.readAds);
-const readDetailFeedSaga = createRequestSaga(READ_DETAIL_FEED, api.readDetailFeed);
+const readFeedsSaga = reduxUtils.createRequestSaga(READ_FEEDS, api.readFeeds);
+const readFilterCategorysSaga = reduxUtils.createRequestSaga(READ_FILTER_CATEGORYS, api.readFilterCategorys);
+const readAdsSaga = reduxUtils.createRequestSaga(READ_ADS, api.readAds);
+const readDetailFeedSaga = reduxUtils.createRequestSaga(READ_DETAIL_FEED, api.readDetailFeed);
 
 export function* feedSaga() {
   yield takeLatest(READ_FEEDS, readFeedsSaga);

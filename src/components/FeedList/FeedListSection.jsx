@@ -15,6 +15,8 @@ const FeedListSection = () => {
   const { categorys } = useReadFilterCategorys({ category: filterCategory });
   const { ads } = useReadAds();
 
+  const FEED_PER_ADS = 5;
+
   return (
     <section className="feedlist-section">
       {categorys && <FeedListOption categorys={categorys} />}
@@ -23,7 +25,7 @@ const FeedListSection = () => {
         {feeds.data.length > 0 &&
           ads.data.length > 0 &&
           categorys &&
-          feeds.data.map(feed => {
+          feeds.data.map((feed, index) => {
             const createdAt = replaceDateFormat(feed.created_at);
             return (
               <div className="feed" key={`feeds-${feed.id}`}>
@@ -48,24 +50,25 @@ const FeedListSection = () => {
                     </div>
                   </Link>
                 </div>
-                {feed.id % 5 === 0 && !isHideAds ? (
-                  <div key={`ads-${ads.data[feed.id].id}`} className="feed-ads">
+
+                {(index + 1) % FEED_PER_ADS === 0 && !isHideAds && (
+                  <div key={`ads-${ads.data[index].id}`} className="feed-ads">
                     <div className="feed-ads-category">sponsored</div>
                     <div className="feed-ads-content">
                       <div className="feed-ads-image-wrap">
                         <img
                           className="feed-ads-image"
-                          src={`https://cdn.comento.kr/assignment/${ads.data[feed.id].img}`}
+                          src={`https://cdn.comento.kr/assignment/${ads.data[index].img}`}
                           alt=""
                         />
                       </div>
                       <div className="feed-ads-text">
-                        <div className="feed-ads-title">{ads.data[feed.id].title}</div>
-                        <div className="feed-ads-description">{ads.data[feed.id].contents}</div>
+                        <div className="feed-ads-title">{ads.data[index].title}</div>
+                        <div className="feed-ads-description">{ads.data[index].contents}</div>
                       </div>
                     </div>
                   </div>
-                ) : null}
+                )}
               </div>
             );
           })}

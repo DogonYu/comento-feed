@@ -6,7 +6,7 @@ const useReadFeeds = () => {
   const { feeds, ordType, filterCategory } = useSelector(({ feed }) => feed, []);
   const dispatch = useDispatch();
 
-  const limit = 20;
+  const limit = 10;
   useEffect(() => {
     dispatch(readFeeds({ page: 1, ord: ordType, category: filterCategory, limit }));
     return () => dispatch(initialize());

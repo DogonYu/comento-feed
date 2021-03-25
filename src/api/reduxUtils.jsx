@@ -1,11 +1,11 @@
 import { call, put } from 'redux-saga/effects';
 
-export const createRequestActionTypes = type => {
+const createRequestActionTypes = type => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
   return [type, SUCCESS, ERROR];
 };
 
-export default function createRequestSaga(type, request) {
+const createRequestSaga = (type, request) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
   return function* (action) {
@@ -16,4 +16,6 @@ export default function createRequestSaga(type, request) {
       yield put({ type: ERROR, payload: e, error: true });
     }
   };
-}
+};
+
+export default { createRequestActionTypes, createRequestSaga };

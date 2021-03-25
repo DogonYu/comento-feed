@@ -7,18 +7,20 @@ const API = axios.create({
   },
 });
 
-export const readFeeds = ({ page, ord, category, limit }) => {
+const readFeeds = ({ page, ord, category, limit }) => {
   return API.get(`/api/list`, { params: { page, ord, category, limit } });
 };
 
-export const readFilterCategorys = () => {
+const readFilterCategorys = () => {
   return API.get(`/api/category`);
 };
 
-export const readAds = ({ page, limit }) => {
+const readAds = ({ page, limit }) => {
   return API.get(`/api/ads`, { params: { page, limit } });
 };
 
-export const readDetailFeed = ({ id }) => {
+const readDetailFeed = ({ id }) => {
   return API.get(`/api/view`, { params: { id } });
 };
+
+export default { readFeeds, readFilterCategorys, readAds, readDetailFeed };

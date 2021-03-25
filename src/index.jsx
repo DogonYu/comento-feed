@@ -5,6 +5,11 @@ import { Provider } from 'react-redux';
 import App from './App';
 import { store } from './store';
 
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/stable';
+
 import './styles.scss';
 
 ReactDOM.render(
