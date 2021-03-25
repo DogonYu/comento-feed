@@ -17,6 +17,8 @@ const FeedViewSection = ({ match }) => {
               <div className="feed-item-description">{detailFeed.contents}</div>
             </div>
             <div className="feed-item-info">
+              <div className="feed-item-info-email">{detailFeed.user.email}</div>
+              <div className="separator" />
               <div className="feed-item-info-create">{feedCreatedAt}</div>
             </div>
           </div>
@@ -36,6 +38,8 @@ const FeedViewSection = ({ match }) => {
                       <div className="feed-item-description">{reply.contents}</div>
                     </div>
                     <div className="feed-item-info">
+                      <div className="feed-item-info-email">{detailFeed.user.email}</div>
+                      <div className="separator" />
                       <div className="feed-item-info-create">{replyCreatedAt}</div>
                     </div>
                   </div>

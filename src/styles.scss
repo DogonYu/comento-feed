@@ -337,9 +337,13 @@ header {
       display: flex;
       align-items: center;
       margin-top: 15px;
-      .feed-item-info-create {
-        font-size: 13px;
-        color: #adb5bd;
+      font-size: 13px;
+      color: #adb5bd;
+      .separator {
+        width: 1px;
+        height: 15px;
+        background-color: #e1e4e7;
+        margin: 0 10px;
       }
     }
     .feed-item-content {
