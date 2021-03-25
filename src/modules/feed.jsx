@@ -48,8 +48,8 @@ const initialState = {
     data: [],
   },
   detailFeed: null,
-  ordType: 'asc',
-  filterCategory: [1, 2, 3],
+  ordType: localStorage.getItem('ordType') || 'asc',
+  filterCategory: localStorage.getItem('filter') || [1, 2, 3],
   isHideAds: false,
   feedsError: null,
   categoryError: null,
@@ -114,12 +114,14 @@ export default handleActions(
       };
     },
     [SET_ORD]: (state, { payload: ordType }) => {
+      localStorage.setItem('ordType', ordType);
       return {
         ...state,
         ordType,
       };
     },
     [SET_FILTER]: (state, { payload: filterCategory }) => {
+      localStorage.setItem('filterCategory', filterCategory);
       return {
         ...state,
         filterCategory,
