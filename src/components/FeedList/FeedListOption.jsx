@@ -39,7 +39,13 @@ const FeedListOption = ({ categorys }) => {
         </div>
       </div>
       <div className="option-filter-wrap">
-        <button className="option-filter-btn option-ads-hide-btn" type="button" onClick={onSetHideAds}>
+        <button
+          className={
+            !isHideAds ? `option-filter-btn option-ads-hide-btn` : `option-filter-btn option-ads-hide-btn active-hide`
+          }
+          type="button"
+          onClick={onSetHideAds}
+        >
           {!isHideAds ? '광고 가리기' : '광고 보기'}
         </button>
         <button className="option-filter-btn" type="button" onClick={onFilterModalShow}>

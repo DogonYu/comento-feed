@@ -44,6 +44,9 @@ header {
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    &:hover {
+      background-color: #00b334;
+    }
   }
 }
 .feedlist-section {
@@ -106,6 +109,14 @@ header {
       }
       .option-ads-hide-btn {
         width: 100px;
+      }
+      .active-hide {
+        border-color: #00c854;
+        color: #00c854;
+        &:hover {
+          background-color: #00c854;
+          color: white;
+        }
       }
       .modal-overlay {
         position: fixed;
@@ -276,6 +287,7 @@ header {
     margin: 20px 0;
     .more-btn {
       font-size: 16px;
+      color: #00c854;
       border: 1px solid #00c854;
       background-color: white;
       border-radius: 3px;
