@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import FeedListOption from 'src/components/FeedList/FeedListOption';
 import useSetFilter from 'src/hooks/useSetFilter';
@@ -9,17 +9,11 @@ import useReadAds from 'src/hooks/useReadAds';
 import replaceDateFormat from 'src/api/replaceDateFormat';
 
 const FeedListSection = () => {
-  const target = useRef();
-  const [isMount, setIsMount] = useState(false);
   const { filterCategory } = useSetFilter();
   const { isHideAds } = useSetHideAds();
-  const { feeds } = useReadFeeds({ target });
+  const { feeds, onReadFeeds } = useReadFeeds();
   const { categorys } = useReadFilterCategorys({ category: filterCategory });
   const { ads } = useReadAds();
-
-  useEffect(() => {
-    if (feeds.data.length > 0) setIsMount(true);
-  }, [feeds.data]);
 
   return (
     <section className="feedlist-section">
@@ -77,7 +71,13 @@ const FeedListSection = () => {
           })}
       </div>
 
-      {isMount && <div ref={target} />}
+      <div className="more-btn-wrap">
+        {feeds && feeds.total !== feeds.to && (
+          <button className="more-btn" type="button" onClick={() => onReadFeeds(feeds.current_page + 1)}>
+            더 보기
+          </button>
+        )}
+      </div>
     </section>
   );
 };
