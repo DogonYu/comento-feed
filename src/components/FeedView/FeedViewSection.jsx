@@ -5,7 +5,7 @@ import replaceDateFormat from 'src/api/replaceDateFormat';
 
 const FeedViewSection = ({ match }) => {
   const { id } = match.params;
-  const { detailFeed } = useReadDetailFeed({ id });
+  const { detailFeed, detailFeedLoading } = useReadDetailFeed({ id });
   const feedCreatedAt = detailFeed && replaceDateFormat(detailFeed.created_at);
   return (
     <>
@@ -49,6 +49,7 @@ const FeedViewSection = ({ match }) => {
           </div>
         </section>
       )}
+      {detailFeedLoading && !detailFeed && <div className="loader" />}
     </>
   );
 };

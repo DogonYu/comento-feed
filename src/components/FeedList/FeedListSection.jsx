@@ -11,7 +11,7 @@ import replaceDateFormat from 'src/api/replaceDateFormat';
 const FeedListSection = () => {
   const { filterCategory } = useSetFilter();
   const { isHideAds } = useSetHideAds();
-  const { feeds, onReadFeeds } = useReadFeeds();
+  const { feeds, feedsLoading, onReadFeeds } = useReadFeeds();
   const { categorys } = useReadFilterCategorys({ category: filterCategory });
   const { ads } = useReadAds();
 
@@ -72,6 +72,7 @@ const FeedListSection = () => {
               </div>
             );
           })}
+        {feedsLoading && !feeds.data.length && <div className="loader" />}
       </div>
 
       <div className="more-btn-wrap">

@@ -4,6 +4,7 @@ import { readFeeds, initialize } from 'src/modules/feed';
 
 const useReadFeeds = () => {
   const { feeds, ordType, filterCategory } = useSelector(({ feed }) => feed, []);
+  const { feedsLoading } = useSelector(({ loading }) => ({ feedsLoading: loading['feed/READ_FEEDS'] }), []);
   const dispatch = useDispatch();
 
   const LIMIT = 20;
@@ -14,7 +15,7 @@ const useReadFeeds = () => {
 
   const onReadFeeds = page => dispatch(readFeeds({ page, ord: ordType, category: filterCategory, limit: LIMIT }));
 
-  return { feeds, onReadFeeds };
+  return { feeds, feedsLoading, onReadFeeds };
 };
 
 export default useReadFeeds;
