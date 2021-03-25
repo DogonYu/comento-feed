@@ -6,9 +6,10 @@ import useSetHideAds from 'src/hooks/useSetHideAds';
 const FeedListOption = ({ categorys }) => {
   const [filterModalShow, setFilterModalShow] = useState(false);
   const [filtering, setFiltering] = useState([1, 2, 3]);
-  const { onSetFilter } = useSetFilter();
+  const { filterCategory, onSetFilter } = useSetFilter();
   const { ordType, onSetOrd } = useSetOrd();
   const { isHideAds, onSetHideAds } = useSetHideAds();
+  const currentCategory = categorys.category.map(category => category);
   const onClickAsc = () => onSetOrd('asc');
   const onClickDesc = () => onSetOrd('desc');
   const onFilterModalShow = () => setFilterModalShow(true);
@@ -49,7 +50,14 @@ const FeedListOption = ({ categorys }) => {
           {!isHideAds ? '광고 가리기' : '광고 보기'}
         </button>
         <button className="option-filter-btn" type="button" onClick={onFilterModalShow}>
-          필터
+          필터:
+          {currentCategory.map(category =>
+            filterCategory.includes(category.id) ? (
+              <span key={category.id} className="current-filter">
+                {category.name}
+              </span>
+            ) : null,
+          )}
         </button>
         {filterModalShow && categorys ? (
           <>

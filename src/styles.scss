@@ -94,7 +94,7 @@ header {
         margin-left: 10px;
       }
       .option-filter-btn {
-        width: 48px;
+        min-width: 48px;
         height: 24px;
         cursor: pointer;
         color: #adb5bd;
@@ -105,6 +105,9 @@ header {
         &:hover {
           color: #00c854;
           border-color: #00c854;
+        }
+        .current-filter:before {
+          content: ', ';
         }
       }
       .option-ads-hide-btn {
