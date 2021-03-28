@@ -10,7 +10,8 @@ import 'regenerator-runtime/runtime';
 import 'react-app-polyfill/ie9';
 import 'react-app-polyfill/stable';
 
-import './styles.scss';
+import './scss/common/_base.scss';
+import './scss/import/_styles.scss';
 
 ReactDOM.render(
   <Provider store={store}>
