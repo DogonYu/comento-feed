@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { readAds } from 'src/modules/feed';
 
 const useReadAds = () => {
-  const { ads } = useSelector(({ feed }) => feed, []);
+  const { ads } = useSelector(({ feed }) => feed);
   const dispatch = useDispatch();
 
   useEffect(() => {

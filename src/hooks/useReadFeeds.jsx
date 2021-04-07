@@ -4,7 +4,7 @@ import { readFeeds, initialize } from 'src/modules/feed';
 
 const useReadFeeds = () => {
   const { feeds, ordType, filterCategory } = useSelector(({ feed }) => feed, []);
-  const { feedsLoading } = useSelector(({ loading }) => ({ feedsLoading: loading['feed/READ_FEEDS'] }), []);
+  const { feedsLoading } = useSelector(({ loading }) => ({ feedsLoading: loading['feed/READ_FEEDS'] }));
   const dispatch = useDispatch();
 
   const LIMIT = 20;

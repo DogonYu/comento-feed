@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { readFilterCategorys } from 'src/modules/feed';
 
 const useReadFilterCategorys = () => {
-  const { categorys } = useSelector(({ feed }) => feed, []);
+  const { categorys } = useSelector(({ feed }) => feed);
   const dispatch = useDispatch();
 
   useEffect(() => {
