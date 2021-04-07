@@ -30,11 +30,11 @@ const FeedListOption = ({ categorys }) => {
   return (
     <div className="feedlist-option-wrap">
       <div className="option-ord-wrap">
-        <div className={ordType === 'asc' ? `option-ord-btn active` : 'option-ord-btn'} onClick={onClickAsc}>
+        <div className={ordType === 'asc' ? 'option-ord-btn active' : 'option-ord-btn'} onClick={onClickAsc}>
           <div className="option-ord-circle" />
           오름차순
         </div>
-        <div className={ordType === 'desc' ? `option-ord-btn active` : 'option-ord-btn'} onClick={onClickDesc}>
+        <div className={ordType === 'desc' ? 'option-ord-btn active' : 'option-ord-btn'} onClick={onClickDesc}>
           <div className="option-ord-circle" />
           내림차순
         </div>
@@ -42,7 +42,7 @@ const FeedListOption = ({ categorys }) => {
       <div className="option-filter-wrap">
         <button
           className={
-            !isHideAds ? `option-filter-btn option-ads-hide-btn` : `option-filter-btn option-ads-hide-btn active-hide`
+            !isHideAds ? 'option-filter-btn option-ads-hide-btn' : 'option-filter-btn option-ads-hide-btn active-hide'
           }
           type="button"
           onClick={onSetHideAds}
